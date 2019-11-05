@@ -1,0 +1,61 @@
+--- 
+title: "Course Project: Shiny Application and Reproducible Pitch"
+author: "Victor Vaquero"
+date: "November 5, 2019"
+output: ioslides_presentation
+
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Project summary 
+
+This is a Rstudio presentation about an application developed for the Developing Data Product coursera course.
+
+**Requirements:**
+
+- Write a shiny application with associated supporting documentation
+
+- Deploy the application on Rstudio's shiny server
+
+- Share the application link by pasting it into the provided text box
+
+- Share your server.R and ui.R code on github
+
+## Application Overview 
+
+The application works with the iris dataset. This data set contains 3 classes of 50 instances each, where each class refers to a type of iris plant. The idea of this app is to classify the type of flower based on the length and width of its petal. For that:
+
+- A decision tree model is generated with the lengths and widths petals of the dataset. A plot of this decision tree is shown in the second tab of the app.
+
+- The user introduces a length and width petal. This new type of flower is plotted together with the data from the iris dataset in the first tab of the app.
+
+- The decision tree model predicts the type of flower for the length and width petal introduced by the user. Also the new point is plotted with the same color as the predicted specie.
+
+
+## Decision tree model:
+Training the model:
+```{r, eval=FALSE,echo=T}
+  modFit1<-rpart(Species~Petal.Length+Petal.Width,data=iris
+                 , method = "class")
+```
+Predicting with the values from the user:
+```{r, eval=FALSE,echo=T}
+  modelpred <- reactive({
+    petallengthInput <- input$sliderPetalLength
+    petalwidthInput <- input$sliderPetalWidth
+    predict(modFit1,newdata=data.frame(Petal.Length=petallengthInput
+                        ,Petal.Width=petalwidthInput),type="class")
+    
+  })
+```
+
+
+
+## Links of interest:
+
+* Application URL: https://victorvaquero.shinyapps.io/app-project/
+* Github Repository URL: https://github.com/VictorVaquerosoto/DataProducts

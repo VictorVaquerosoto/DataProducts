@@ -1,0 +1,12 @@
+name: app-project
+title: app-project
+username:
+account: victorvaquero
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1424678
+bundleId: 2565587
+url: https://victorvaquero.shinyapps.io/app-project/
+when: 1572962339.83739
+asMultiple: FALSE
+asStatic: FALSE
